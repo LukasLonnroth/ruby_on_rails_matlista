@@ -18,6 +18,7 @@ class WelcomeController < ApplicationController
       end
     end
     @arcadaResponse = todayString
+    @arcadaOpen = menusForDays[0]['LunchTime']
 
     response = RestClient.get('https://www.fazerfoodco.fi/modules/json/json/Index?costNumber=3104&language=sv-FI')
     json = JSON.parse(response)
@@ -33,5 +34,6 @@ class WelcomeController < ApplicationController
       end
     end
     @diakResponse = todayString
+    @diakOpen = menusForDays[0]['LunchTime']
   end
 end
