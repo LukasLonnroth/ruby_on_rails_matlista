@@ -21,7 +21,7 @@ class WelcomeController < ApplicationController
       @arcadaResponse = todayString
       @arcadaOpen = menusForDays[0]['LunchTime']
     rescue NoMethodError
-      @arcadaResponse = "Error in fetching data"
+      @arcadaResponse = "Error when fetching data"
       @arcadaOpen = "Closed"
     end
 
@@ -42,7 +42,7 @@ class WelcomeController < ApplicationController
       @diakResponse = todayString
       @diakOpen = menusForDays[0]['LunchTime']
     rescue NoMethodError
-      @diakResponse = "Error in fetching data"
+      @diakResponse = "Error when fetching data"
       @diakOpen = "Closed"
     end
 
