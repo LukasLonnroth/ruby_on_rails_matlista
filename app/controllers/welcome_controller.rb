@@ -26,6 +26,20 @@ class WelcomeController < ApplicationController
     end
 
     begin
+      response = RestClient.get('https://api.citybik.es/v2/networks/citybikes-helsinki')
+      json = JSON.parse(response)
+      stations = json['network']['stations']
+
+      @arabiaBikes = stations[270]['free_bikes']
+      @arabiaSlots = stations[270]['free_bikes'] + stations[270]['empty_slots']
+      @diakBikes = stations[210]['free_bikes']
+      @diakSlots = stations[210]['free_bikes'] + stations[210]['empty_slots']
+    rescue NoMethodError
+      @arcadaResponse = "Error when fetching data"
+      @arcadaOpen = "Closed"
+    end
+
+    begin
       response = RestClient.get('https://www.fazerfoodco.fi/modules/json/json/Index?costNumber=3104&language=sv-FI')
       json = JSON.parse(response)
       menusForDays = json['MenusForDays']
