@@ -5,7 +5,7 @@ require 'json'
 class WelcomeController < ApplicationController
   def index
     begin
-      response = RestClient.get('https://www.amica.fi/modules/json/json/Index?costNumber=3003&language=sv-FI')
+      response = RestClient.get('https://www.fazerfoodco.fi/modules/json/json/Index?costNumber=3003&language=sv-FI')
       json = JSON.parse(response)
       menusForDays = json['MenusForDays']
       today = menusForDays[0]
